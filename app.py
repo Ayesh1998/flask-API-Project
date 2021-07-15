@@ -6,13 +6,13 @@ api = Api(app)
 
 
 class HelloWorld(Resource):
-    def get(self):
-        return {"data": "Hello World"}
+    def get(self, name):
+        return {"data": "Hello World", "name": name}
 
     def post(self):
         return {"data": "Post Data"}
 
-api.add_resource(HelloWorld, '/helloworld')
+api.add_resource(HelloWorld, '/helloworld/<string:name>')
 
 if __name__ == '__main__':
     app.run(debug=True)
