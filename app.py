@@ -5,13 +5,14 @@ app = Flask(__name__)
 api = Api(app)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+class HelloWorld(Resource):
+    def get(self):
+        return {"data": "Hello World"}
 
-@app.route('/<name>')
-def name(name):
-    return 'Hello World!' + name
+    def post(self):
+        return {"data": "Post Data"}
+
+api.add_resource(HelloWorld, '/helloworld')
 
 if __name__ == '__main__':
     app.run(debug=True)
